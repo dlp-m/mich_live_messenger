@@ -1,6 +1,6 @@
- <%= simple_form_for [:administrators, administrator], html: { class: "administrator form" } do |f| %>
+ <%= simple_form_for [ :administrators, administrator ], html: { class: "administrator form" } do |f| %>
   <!-- Model columns -->
-  <%= f.input :email,label: I18n.t('bo.administrator.attributes.email') %>
+  <%= f.input :email, label: I18n.t("bo.administrator.attributes.email") %>
   <!-- belongs_to Associations -->
   <!-- RichText Associations -->
   <!-- File Associations -->

@@ -1,4 +1,4 @@
 <%= render(SidebarComponent.new) do |sidebar| %>
-  <%= sidebar.with_item(path: administrators_administrators_path, icon: Icons::UsersComponent, label: I18n.t('bo.administrator.others').capitalize) %>
+  <%= sidebar.with_item(path: administrators_administrators_path, icon: Icons::UsersComponent, label: I18n.t("bo.administrator.others").capitalize) %>
   <%= sidebar.with_current_user_card(user: current_administrator) %>
 <% end %>

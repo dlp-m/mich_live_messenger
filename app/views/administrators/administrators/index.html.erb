@@ -1,20 +1,20 @@
 <%= render(IndexComponent.new) do |index| %>
   <!-- Header -->
   <%= index.with_header(
-    title: I18n.t('bo.administrator.others').capitalize,
-    subtitle: I18n.t('bo.administrator.subtitle').capitalize,
+    title: I18n.t("bo.administrator.others").capitalize,
+    subtitle: I18n.t("bo.administrator.subtitle").capitalize,
       ) do |header| %>
     <%= header.with_add_button(path: new_administrators_administrator_path) %>
-    <%= header.with_export_button(path: export_csv_administrators_administrators_path(format: :csv, params: {q: params.permit!['q']}))%>
+    <%= header.with_export_button(path: export_csv_administrators_administrators_path(format: :csv, params: { q: params.permit!["q"] })) %>
   <% end %>
 
   <!-- Search Bar -->
-  <%= render('search_bar') %>
+  <%= render("search_bar") %>
   <!-- Table -->
-  <%= turbo_frame_tag "administrators", target: '_top' do %>
-    <%= render('table') %>
+  <%= turbo_frame_tag "administrators", target: "_top" do %>
+    <%= render("table") %>
     <div class="py-2">
-      <%== render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%== render partial: "shared/pagination", locals: { pagy: @pagy } %>
     </div>
   <% end %>
 <% end %>
