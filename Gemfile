@@ -14,6 +14,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "view_component"
+gem "tailwindcss-rails", "~> 3.3.1"
 gem "tybo", path: "/home/dlp/rails/perso/tybo"
 
 # --- Forms & UI ---
