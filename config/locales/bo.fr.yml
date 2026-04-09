@@ -1,0 +1,139 @@
+---
+fr:
+  date:
+    abbr_day_names:
+    - Dim
+    - Lun
+    - Mar
+    - Mer
+    - Jeu
+    - Ven
+    - Sam
+    day_names:
+    - Dimanche
+    - Lundi
+    - Mardi
+    - Mercredi
+    - Jeudi
+    - Vendredi
+    - Samedi
+    abbr_month_names:
+    -
+    - Jan
+    - Fév
+    - Mar
+    - Avr
+    - Mai
+    - Juin
+    - Juil
+    - Aoû
+    - Sep
+    - Oct
+    - Nov
+    - Déc
+    month_names:
+    -
+    - Janvier
+    - Février
+    - Mars
+    - Avril
+    - Mai
+    - Juin
+    - Juillet
+    - Août
+    - Septembre
+    - Octobre
+    - Novembre
+    - Décembre
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+  time:
+    am: am
+    pm: pm
+    formats:
+      default: "%A %d %B %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%A %d %B %Y %H:%M"
+  datetime:
+    distance_in_words:
+      half_a_minute: une demi-minute
+      less_than_x_seconds:
+        one: moins d'une seconde
+        other: moins de %{count} secondes
+      x_seconds:
+        one: 1 seconde
+        other: "%{count} secondes"
+      less_than_x_minutes:
+        one: moins d'une minute
+        other: moins de %{count} minutes
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      about_x_hours:
+        one: environ 1 heure
+        other: environ %{count} heures
+      x_days:
+        one: 1 jour
+        other: "%{count} jours"
+      about_x_months:
+        one: environ 1 mois
+        other: environ %{count} mois
+      x_months:
+        one: 1 mois
+        other: "%{count} mois"
+      about_x_years:
+        one: environ 1 an
+        other: environ %{count} ans
+      over_x_years:
+        one: plus d'un an
+        other: plus de %{count} ans
+      almost_x_years:
+        one: presque 1 an
+        other: presque %{count} ans
+  bo:
+    filters: Filtres
+    show: Détails
+    to: à
+    export_btn: Export CSV
+    add_ressource_btn: "+"
+    confirm_delete: Êtes-vous sûr ?
+    record:
+      created: Création effectuée
+      updated: Modification effectuée
+      destroyed: Suppression effectuée
+    nav:
+      prev: Précédent
+      next: Suivant
+      gap: "..."
+    pagy:
+      showing: Affichage de
+      to: à
+      of: de
+      show: Détails
+      results: résultats
+    devise:
+      password: Mot de passe
+      forgot_password: Mot de passe oublié ?
+      reset_password_instructions:
+      remember_me: Se souvenir de moi ?
+      sign_in: Connexion
+      send_me_reset_password_instructions: Réinitialiser mon mot de passe
+      save: Sauvegarder
+      sign_in_as:
+        administrator: Espace administrateur
+    administrator:
+      one:
+      others:
+      new:
+      subtitle:
+      attributes:
+        id: Identifiant
+        email: Email
+        encrypted_password:
+        reset_password_token:
+        reset_password_sent_at:
+        remember_created_at:
+        created_at: Date de création
+        updated_at: Date de modification

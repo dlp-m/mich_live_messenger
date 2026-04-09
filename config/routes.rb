@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  # Administrators
+  namespace :administrators do
+    root to: 'administrators#index'
+    resources :administrators do
+        get 'export_csv', on: :collection
+      end
+
+  end
+  devise_for :administrators, path: 'administrators'
+  mount Tybo::Engine => "/tybo"
+  root to: 'tybo/login#home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

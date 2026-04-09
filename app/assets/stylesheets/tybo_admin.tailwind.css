@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'actiontext.css';
+
+/* pagination  */
+.pagy-nav,
+.pagy-nav-js {
+    @apply flex space-x-2;
+}
+
+.pagy-nav .page a,
+.pagy-nav .page.active,
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page a,
+.pagy-nav-js .page.active,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+    @apply block rounded-lg px-3 py-1 text-sm text-tybo-500 font-semibold bg-tybo-200 shadow-md;
+
+    &:hover {
+        @apply bg-tybo-300;
+    }
+
+    &:active {
+        @apply bg-tybo-400 text-white;
+    }
+}
+
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+    @apply text-tybo-400 cursor-default;
+
+    &:hover {
+        @apply text-tybo-400 bg-tybo-200;
+    }
+
+    &:active {
+        @apply text-tybo-400 bg-tybo-200;
+    }
+}
+
+.pagy-nav .page.active,
+.pagy-nav-js .page.active {
+    @apply text-white cursor-default bg-tybo-400;
+
+    &:hover {
+        @apply text-white bg-tybo-400;
+    }
+
+    &:active {
+        @apply bg-tybo-400 text-white;
+    }
+}
+
+
+.pagy-combo-nav-js {
+    @apply flex max-w-max rounded-full px-3 py-1 text-sm text-tybo-500 font-semibold bg-tybo-200 shadow-md;
+}
+
+.pagy-combo-nav-js .pagy-combo-input {
+    @apply bg-white px-2 rounded-sm
+}
+
+.pagy-combo-nav-js .page.prev,
+.pagy-combo-nav-js .page.next {
+    &:hover {
+        @apply text-tybo-800;
+    }
+
+    &:active {
+        @apply text-tybo-800;
+    }
+}
+
+.pagy-combo-nav-js .page.prev.disabled,
+.pagy-combo-nav-js .page.next.disabled {
+    @apply text-tybo-400 cursor-default;
+}
+
+/* tom-select  */
+ts-wrapper {
+    @apply w-full !ml-0;
+}
+
+.ts-control {
+    @apply shadow-sm rounded-lg my-5 border-tybo-300 bg-white py-2 px-3 text-base;
+}
+
+.ts-dropdown {
+    @apply rounded-md border border-solid border-t border-tybo-300 text-base;
+}
+
+.ts-dropdown [data-selectable].option:first-child {
+    @apply rounded-t-lg;
+}
+
+.ts-dropdown [data-selectable].option:last-child {
+    @apply rounded-b-lg;
+}
+
+.ts-dropdown .create:hover,
+.ts-dropdown .option:hover {
+    @apply bg-sky-50 text-sky-900;
+}
+
+.ts-dropdown .active {
+    @apply bg-tybo-100 text-tybo-900;
+}

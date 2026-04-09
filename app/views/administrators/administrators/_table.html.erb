@@ -1,0 +1,41 @@
+<%= render(Tables::TableComponent.new) do |table| %>
+  <% table.with_thead do |thead| %>
+    <%= thead.with_active_record_th(column_name: 'id',  ransack_object: @q) %>
+    <%= thead.with_active_record_th(column_name: 'email',  ransack_object: @q) %>
+    <%= thead.with_active_record_th(column_name: 'encrypted_password',  ransack_object: @q) %>
+    <%= thead.with_active_record_th(column_name: 'reset_password_token',  ransack_object: @q) %>
+    <%= thead.with_active_record_th(column_name: 'reset_password_sent_at',  ransack_object: @q) %>
+    <%= thead.with_active_record_th(column_name: 'remember_created_at',  ransack_object: @q) %>
+    <%= thead.with_active_record_th(column_name: 'created_at',  ransack_object: @q) %>
+    <%= thead.with_active_record_th(column_name: 'updated_at',  ransack_object: @q) %>
+    <%= thead.with_active_record_th %>
+    <%= thead.with_active_record_th %>
+  <% end %>
+
+  <% table.with_tbody do |tbody| %>
+    <% @administrators&.each_with_index do |administrator, i| %>
+      <%= tbody.with_tr(index: i) do |tr| %>
+          <%= tr.with_td { administrator.id.to_s } %>
+          <%= tr.with_td { administrator.email.to_s } %>
+          <%= tr.with_td { administrator.encrypted_password.to_s } %>
+          <%= tr.with_td { administrator.reset_password_token.to_s } %>
+          <%= tr.with_td { I18n.l(administrator.reset_password_sent_at, format: :long) if administrator.reset_password_sent_at } %>
+          <%= tr.with_td { I18n.l(administrator.remember_created_at, format: :long) if administrator.remember_created_at } %>
+          <%= tr.with_td { I18n.l(administrator.created_at, format: :long) if administrator.created_at } %>
+          <%= tr.with_td { I18n.l(administrator.updated_at, format: :long) if administrator.updated_at } %>
+        <%= tr.with_td do %>
+          <%= link_to administrators_administrator_path(administrator), class: "text-tybo-600 hover:text-tybo-900"  do %>
+            <%= I18n.t('bo.show') %>
+          <% end %>
+        <% end %>
+        <%= tr.with_td do %>
+          <%= link_to administrators_administrator_path(administrator),
+          class: "text-tybo-600 hover:text-tybo-900",
+          data: { turbo_method: :delete, turbo_confirm: I18n.t('bo.confirm_delete') } do %>
+            <%= render(Icons::TrashComponent.new) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

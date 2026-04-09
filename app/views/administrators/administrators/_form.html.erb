@@ -1,0 +1,10 @@
+ <%= simple_form_for [:administrators, administrator], html: { class: "administrator form" } do |f| %>
+  <!-- Model columns -->
+  <%= f.input :email,label: I18n.t('bo.administrator.attributes.email') %>
+  <!-- belongs_to Associations -->
+  <!-- RichText Associations -->
+  <!-- File Associations -->
+  <!-- has_one Associations -->
+  <!-- has_many Associations -->
+  <%= render(Forms::SubmitButtonComponent.new) %>
+<% end %>

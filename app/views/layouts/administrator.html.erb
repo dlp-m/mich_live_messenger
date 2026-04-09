@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BO-Administrator</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tybo_admin", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags "application_tybo_admin" %>
+  </head>
+  <body class="h-full bg-home">
+    <% if administrator_signed_in? %>
+    <%= render('administrators/layouts/side_bar') %>
+    <% end %>
+    <div class="lg:pl-72">
+      <main class="py-10">
+        <div class="px-4 sm:px-6 lg:px-8">
+          <%= render('layouts/flash') %>
+          <%= yield %>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
