@@ -1,1 +1,3 @@
-<%# Bureau — contenu à venir (icônes, fenêtres...) %>
+<% unless user_signed_in? %>
+  <%= render "login_window" %>
+<% end %>

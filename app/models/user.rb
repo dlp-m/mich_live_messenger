@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # Extensions
-  devise :database_authenticatable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # Enumerize
   # Validations
