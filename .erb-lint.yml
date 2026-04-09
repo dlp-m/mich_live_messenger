@@ -1,0 +1,22 @@
+---
+EnableDefaultLinters: true
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
+linters:
+  ErbSafety:
+    enabled: true
+  RailsI18n:
+    enabled: false
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      inherit_from:
+        - .erb-lint_rubocop.yml
+  AllowedScriptType:
+      enabled: true
+      allowed_types:
+        - 'application/json'
+        - 'text/javascript'
+        - 'text/html'
+        - 'application/ld+json'

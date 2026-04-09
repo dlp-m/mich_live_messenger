@@ -6,3 +6,6 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+AllCops:
+  Exclude:
+    - 'lib/templates/active_record/model/model.rb' # Rails model template
