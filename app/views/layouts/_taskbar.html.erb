@@ -1,0 +1,51 @@
+<%# Taskbar Windows XP %>
+<div class="fixed bottom-0 left-0 right-0 flex items-stretch z-50
+            h-taskbar bg-winxp-taskbar border-t border-winxp-taskbar-border shadow-winxp-taskbar">
+
+  <%# Bouton Démarrer %>
+  <div class="flex items-center h-full ml-0.5">
+    <button class="flex items-center h-full pl-2.5 pr-4
+                   font-winxp font-bold text-[14px] italic text-white select-none
+                   bg-winxp-start border border-winxp-start-border border-t-winxp-start-top
+                   rounded-r-winxp-pill shadow-winxp-start text-shadow-winxp"
+            aria-label="Démarrer">
+      <%# Logo Windows 4 couleurs %>
+      <span class="grid grid-cols-2 gap-px w-[18px] h-[18px] mr-2 shrink-0">
+        <span class="bg-red-500 rounded-tl-sm"></span>
+        <span class="bg-blue-600 rounded-tr-sm"></span>
+        <span class="bg-green-500 rounded-bl-sm"></span>
+        <span class="bg-yellow-400 rounded-br-sm"></span>
+      </span>
+      démarrer
+    </button>
+  </div>
+
+  <%# Séparateur vertical %>
+  <div class="self-stretch my-1 mx-1 w-0.5 bg-white/10"></div>
+
+  <%# Zone apps ouvertes (vide pour l'instant) %>
+  <div class="flex-1 flex items-center gap-1 px-1 overflow-hidden"></div>
+
+  <%# System tray %>
+  <div class="flex items-center justify-center gap-2 px-3 h-full min-w-[72px]
+              text-white text-[11px] select-none
+              bg-winxp-tray border-l border-winxp-tray-border shadow-winxp-tray">
+    <%# Icône réseau %>
+    <span title="Réseau" class="opacity-90">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="white" aria-hidden="true">
+        <rect x="1" y="9" width="4" height="5"/>
+        <rect x="6" y="6" width="4" height="8"/>
+        <rect x="11" y="3" width="4" height="11"/>
+      </svg>
+    </span>
+    <%# Icône son %>
+    <span title="Volume" class="opacity-90">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="white" aria-hidden="true">
+        <polygon points="2,5 6,5 10,1 10,15 6,11 2,11"/>
+        <path d="M11,5 Q14,8 11,11" stroke="white" stroke-width="1.5" fill="none"/>
+      </svg>
+    </span>
+    <%# Heure %>
+    <span><%= Time.now.strftime("%H:%M") %></span>
+  </div>
+</div>

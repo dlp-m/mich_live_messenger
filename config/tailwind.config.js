@@ -15,12 +15,32 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        winxp: ['Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif'],
       },
       screens: {
         sm: '0px',
         md: '768px',
         lg: '976px',
         xl: '1440px',
+      },
+      spacing: {
+        taskbar: '42px',
+      },
+      borderRadius: {
+        'winxp-pill': '12px',
+      },
+      backgroundImage: {
+        'winxp-taskbar': 'linear-gradient(to bottom, #245edb 0%, #3b80f0 4%, #2663d9 6%, #1e57cc 50%, #1a4fc0 51%, #1e57cc 100%)',
+        'winxp-start':   'linear-gradient(to bottom, #5bb75b 0%, #3da53d 4%, #2e8f2e 40%, #2a862a 50%, #277027 100%)',
+        'winxp-tray':    'linear-gradient(to bottom, #1048c0 0%, #1540b8 50%, #0e38a8 100%)',
+      },
+      boxShadow: {
+        'winxp-taskbar': 'inset 0 1px 0 rgba(255,255,255,0.35)',
+        'winxp-start':   'inset 0 1px 0 rgba(255,255,255,0.3), 2px 0 4px rgba(0,0,0,0.4)',
+        'winxp-tray':    'inset 1px 0 0 rgba(255,255,255,0.15)',
+      },
+      textShadow: {
+        winxp: '1px 1px 2px rgba(0,0,0,0.6)',
       },
       colors: {
         tybo: {
@@ -36,6 +56,12 @@ module.exports = {
           '800': '#6d21a8',
           '900': '#581c87',
           '950': '#3b0764',
+        },
+        winxp: {
+          'taskbar-border': '#0831b0',
+          'start-border':   '#1a5c1a',
+          'start-top':      '#7fd87f',
+          'tray-border':    '#0a2880',
         },
         'red-alert': {
           DEFAULT: '#d0342c',
@@ -58,5 +84,11 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
+    function({ matchUtilities, theme }) {
+      matchUtilities(
+        { 'text-shadow': (value) => ({ textShadow: value }) },
+        { values: theme('textShadow') }
+      )
+    },
   ]
 }
