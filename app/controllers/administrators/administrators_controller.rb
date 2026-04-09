@@ -30,7 +30,7 @@ module Administrators
       authorize! @administrator, to: :create?, namespace:, strict_namespace: true
 
       if @administrator.save
-        flash[:success] = t('bo.record.created')
+        flash[:success] = t("bo.record.created")
         redirect_to administrators_administrators_path
       else
         render :new, status: :unprocessable_entity
@@ -41,7 +41,7 @@ module Administrators
       authorize! @administrator, to: :update?, namespace:, strict_namespace: true
 
       if @administrator.update(administrator_params)
-        flash[:success] = t('bo.record.updated')
+        flash[:success] = t("bo.record.updated")
         redirect_to administrators_administrator_path
       else
         render :show, status: :unprocessable_entity
@@ -52,7 +52,7 @@ module Administrators
       authorize! @administrator, to: :destroy?, namespace:, strict_namespace: true
 
       @administrator.destroy
-      flash[:success] = t('bo.record.destroyed')
+      flash[:success] = t("bo.record.destroyed")
 
       redirect_to administrators_administrators_path, status: :see_other
     end
@@ -62,7 +62,7 @@ module Administrators
       csv_data = generate_csv_data
 
       send_data csv_data,
-                type: 'text/csv; charset=utf-8; header=present',
+                type: "text/csv; charset=utf-8; header=present",
                 disposition: "attachment; filename=#{I18n.t("bo.administrator.other")}_#{Time.zone.now}.csv"
     end
 

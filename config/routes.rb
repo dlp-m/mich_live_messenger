@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   # Administrators
   namespace :administrators do
-    root to: 'administrators#index'
+    root to: "administrators#index"
     resources :administrators do
-        get 'export_csv', on: :collection
+        get "export_csv", on: :collection
       end
-
   end
-  devise_for :administrators, path: 'administrators'
+  devise_for :administrators, path: "administrators"
   devise_for :users
   mount Tybo::Engine => "/tybo"
   root to: "pages#home"

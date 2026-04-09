@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 class AdministratorController < ApplicationController
   include Pagy::Backend
-  layout 'administrator'
+  layout "administrator"
   before_action :authenticate_administrator!, :set_default_locale
   authorize :user, through: :current_administrator
 
