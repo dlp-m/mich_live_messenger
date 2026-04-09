@@ -1,12 +1,13 @@
-class Administrator < ApplicationRecord
+class User < ApplicationRecord
   # Extensions
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
   # Enumerize
   # Validations
+  validates :username, presence: true
+  validates :personal_message, length: { maximum: 129 }, allow_blank: true
   # Associations
+  has_one_attached :avatar
   # Callbacks
   # Scopes
   # Supports
