@@ -38,6 +38,7 @@ export default class extends Controller {
     }).then(r => {
       if (r.ok) {
         this.element.dataset.original = value
+        this.element.dataset.saved = "true"
         if (!value) this.element.textContent = PLACEHOLDER
       } else {
         this._cancel()
