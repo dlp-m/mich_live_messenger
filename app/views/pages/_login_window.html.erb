@@ -26,6 +26,7 @@
 
         <div class="flex-1 min-w-0">
           <%= form_with url: user_session_path, method: :post do |f| %>
+            <%= hidden_field_tag "user[status]", "available", id: "user_status" %>
 
             <div class="mb-2">
               <%= text_field_tag "user[email]", nil,
@@ -47,22 +48,35 @@
 
             <div class="flex items-center gap-1.5 mb-2 text-[12px] text-gray-700">
               <span><%= t("login_window.sign_in_as") %></span>
-              <div class="relative" data-controller="dropdown">
+              <div class="relative" data-controller="dropdown" data-dropdown-field-value="user_status">
                 <span class="inline-flex items-center gap-1 cursor-pointer select-none hover:underline"
                       data-action="click->dropdown#toggle">
-                  <span class="w-2.5 h-2.5 bg-[#22aa22] inline-block rounded-sm"></span>
-                  <span><%= t("login_window.available") %></span>
+                  <span class="w-2.5 h-2.5 inline-block rounded-sm" style="background-color: #22aa22"
+                        data-dropdown-target="dot"></span>
+                  <span data-dropdown-target="label"><%= t("enumerize.user.status.available") %></span>
                   <span class="text-[10px] text-gray-500">▾</span>
                 </span>
                 <div data-dropdown-target="menu" class="hidden absolute left-0 top-full mt-0.5 w-40 bg-[#f4f8fc] border border-[#7898ba] shadow-[1px_2px_4px_rgba(0,0,0,0.18)] z-50 text-[12px]">
-                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer">
-                    <span class="w-2.5 h-2.5 bg-[#22aa22] rounded-sm"></span> <%= t("login_window.available") %>
+                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
+                       data-action="click->dropdown#select"
+                       data-status="available"
+                       data-label="<%= t("enumerize.user.status.available") %>">
+                    <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #22aa22"></span>
+                    <%= t("enumerize.user.status.available") %>
                   </div>
-                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer">
-                    <span class="w-2.5 h-2.5 bg-[#ddaa22] rounded-sm"></span> Absent
+                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
+                       data-action="click->dropdown#select"
+                       data-status="away"
+                       data-label="<%= t("enumerize.user.status.away") %>">
+                    <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #ddaa22"></span>
+                    <%= t("enumerize.user.status.away") %>
                   </div>
-                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer">
-                    <span class="w-2.5 h-2.5 bg-[#cc4444] rounded-sm"></span> Occupé
+                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
+                       data-action="click->dropdown#select"
+                       data-status="busy"
+                       data-label="<%= t("enumerize.user.status.busy") %>">
+                    <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #cc4444"></span>
+                    <%= t("enumerize.user.status.busy") %>
                   </div>
                 </div>
               </div>

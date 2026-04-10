@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   namespace :users do
-    resource :status, only: [ :update ]
+    resource :current_user, only: [ :update ], controller: "current_user"
   end
   mount Tybo::Engine => "/tybo"
   root to: "pages#home"
