@@ -47,11 +47,25 @@
 
             <div class="flex items-center gap-1.5 mb-2 text-[12px] text-gray-700">
               <span><%= t("login_window.sign_in_as") %></span>
-              <span class="inline-flex items-center gap-1 px-1.5 py-px border border-[#a0a8b0] bg-gradient-to-b from-[#f8f8f8] to-[#e4e4e4] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] cursor-default">
-                <span class="w-2.5 h-2.5 bg-[#22aa22] inline-block rounded-sm"></span>
-                <span><%= t("login_window.available") %></span>
-                <span class="text-[10px] text-gray-500">▾</span>
-              </span>
+              <div class="relative" data-controller="dropdown">
+                <span class="inline-flex items-center gap-1 cursor-pointer select-none hover:underline"
+                      data-action="click->dropdown#toggle">
+                  <span class="w-2.5 h-2.5 bg-[#22aa22] inline-block rounded-sm"></span>
+                  <span><%= t("login_window.available") %></span>
+                  <span class="text-[10px] text-gray-500">▾</span>
+                </span>
+                <div data-dropdown-target="menu" class="hidden absolute left-0 top-full mt-0.5 w-40 bg-[#f4f8fc] border border-[#7898ba] shadow-[1px_2px_4px_rgba(0,0,0,0.18)] z-50 text-[12px]">
+                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer">
+                    <span class="w-2.5 h-2.5 bg-[#22aa22] rounded-sm"></span> <%= t("login_window.available") %>
+                  </div>
+                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer">
+                    <span class="w-2.5 h-2.5 bg-[#ddaa22] rounded-sm"></span> Absent
+                  </div>
+                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer">
+                    <span class="w-2.5 h-2.5 bg-[#cc4444] rounded-sm"></span> Occupé
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="space-y-1 text-[12px] text-gray-700">

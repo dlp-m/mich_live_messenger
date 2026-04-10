@@ -1,0 +1,8 @@
+<details <%= "open" if @open %> class="group">
+  <summary class="flex items-center gap-1 px-2 py-[3px] bg-gradient-to-b from-[#ddeeff] to-[#cce0f4] border-b border-[#b0cce4] cursor-pointer list-none select-none">
+    <span class="text-[8px] text-[#2a4a7a] group-open:hidden">▶</span>
+    <span class="text-[8px] text-[#2a4a7a] hidden group-open:inline">▼</span>
+    <span class="text-[11px] font-bold text-[#2a4a7a]"><%= @label %></span>
+  </summary>
+  <%= content %>
+</details>
