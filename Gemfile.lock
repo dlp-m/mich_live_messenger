@@ -146,6 +146,8 @@ GEM
       railties (>= 6.1)
     drb (2.2.3)
     ed25519 (1.4.0)
+    enumerize (2.8.1)
+      activesupport (>= 3.2)
     erb (6.0.2)
     erb_lint (0.9.0)
       activesupport
@@ -481,6 +483,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails
+  enumerize
   erb_lint
   hotwire-livereload
   image_processing (~> 1.2)

@@ -28,6 +28,13 @@
 #       enabled: "ON"
 
 en:
+  enumerize:
+    user:
+      status:
+        available: "Available"
+        away: "Away"
+        busy: "Busy"
+
   login_window:
     title: "Mich Live Messenger"
     sign_in_to: "Sign in to"

@@ -1,4 +1,11 @@
 fr:
+  enumerize:
+    user:
+      status:
+        available: "Disponible"
+        away: "Absent"
+        busy: "Occupé"
+
   login_window:
     title: "Mich Live Messenger"
     sign_in_to: "Se connecter à"

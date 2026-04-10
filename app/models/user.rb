@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   # Extensions
+  extend Enumerize
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # Enumerize
+  enumerize :status, in: %i[available away busy], default: :available, i18n_scope: "enumerize.user.status"
   # Validations
   validates :username, presence: true
   validates :personal_message, length: { maximum: 129 }, allow_blank: true

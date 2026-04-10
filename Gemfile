@@ -25,6 +25,9 @@ gem "simple_form-tailwind", "~> 0.1.1"
 gem "action_policy", "~> 0.7.5"
 # gem "bcrypt", "~> 3.1.7"
 
+# --- Enums & i18n ---
+gem "enumerize"
+
 # --- Database & Queries ---
 gem "activerecord_where_assoc"
 

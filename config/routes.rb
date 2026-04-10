@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
+  namespace :users do
+    resource :status, only: [ :update ]
+  end
   mount Tybo::Engine => "/tybo"
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
