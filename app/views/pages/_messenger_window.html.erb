@@ -56,7 +56,12 @@
               </div>
             </div>
           </div>
-          <p class="text-[11px] text-[#4a6080] truncate italic"><%= current_user.personal_message.presence || "Cliquez ici pour ajouter un message" %></p>
+          <span class="block text-[11px] text-[#4a6080] italic cursor-text truncate outline-none hover:text-[#2a4a7a] focus:bg-white/50 focus:truncate-none"
+                contenteditable="true"
+                data-controller="personal-message"
+                data-personal-message-url-value="<%= users_current_user_path %>"
+                data-action="focus->personal-message#focus blur->personal-message#save keydown->personal-message#keydown"
+                data-original="<%= current_user.personal_message.to_s %>"><%= current_user.personal_message.presence || "Cliquez ici pour ajouter un message" %></span>
         </div>
       </div>
     </div>
