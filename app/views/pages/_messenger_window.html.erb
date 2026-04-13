@@ -30,7 +30,7 @@
               </span>
               <% status_colors = { "available" => "#22aa22", "away" => "#ddaa22", "busy" => "#cc4444" } %>
               <div data-dropdown-target="menu" class="hidden absolute left-0 top-full mt-0.5 w-44 bg-[#f4f8fc] border border-[#7898ba] shadow-[1px_2px_4px_rgba(0,0,0,0.18)] z-50 text-[12px]">
-                <% User.status.values.each do |val| %>
+                <% User.status.values.reject { |val| val.to_sym == :offline }.each do |val| %>
                   <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
                        data-action="click->dropdown#select"
                        data-status="<%= val %>"

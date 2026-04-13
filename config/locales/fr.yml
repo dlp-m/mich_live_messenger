@@ -25,6 +25,7 @@ fr:
         available: "Disponible"
         away: "Absent"
         busy: "Occupé"
+        offline: "Hors ligne"
 
   login_window:
     title: "Mich Live Messenger"

@@ -19,10 +19,9 @@ class Friendship < ApplicationRecord
   # Callbacks
 
   # Scopes
-  scope :pending, -> { where(status: "pending") }
-  scope :accepted, -> { where(status: "accepted") }
-  scope :declined, -> { where(status: "declined") }
-  scope :blocked, -> { where(status: "blocked") }
+  self.status.values.each do |status_value|
+    scope status_value, -> { where(status: status_value) }
+  end
   scope :between, ->(user_a, user_b) {
     where(
       "(requester_id = ? AND receiver_id = ?) OR (requester_id = ? AND receiver_id = ?)",

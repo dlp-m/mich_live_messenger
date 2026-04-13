@@ -1,15 +1,18 @@
 class User < ApplicationRecord
+  # Constants
+  SELECTABLE_STATUSES = %i[available away busy].freeze
+  STATUSES = (SELECTABLE_STATUSES + [ :offline ]).freeze
   # Extensions
   extend Enumerize
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   # Enumerize
-  enumerize :status, in: %i[available away busy], default: :available, i18n_scope: "enumerize.user.status"
+  enumerize :status, in: STATUSES, default: :available, i18n_scope: "enumerize.user.status"
 
   # Validations
   validates :username, presence: true
-  validates :status, presence: true
+  validates :status, presence: true, inclusion: { in: STATUSES.map(&:to_s) }
   validates :personal_message, length: { maximum: 129 }, allow_blank: true
 
   # Associations
@@ -20,13 +23,13 @@ class User < ApplicationRecord
   # Callbacks
 
   # Scopes
-
   # Supports
-
   # Public
   def friends
-    friend_ids = accepted_sent_ids + accepted_received_ids
-    User.where(id: friend_ids)
+    User.joins(
+      "INNER JOIN friendships ON (friendships.requester_id = #{id} AND friendships.receiver_id = users.id) " \
+      "OR (friendships.receiver_id = #{id} AND friendships.requester_id = users.id)"
+    ).where(friendships: { status: :accepted })
   end
 
   def pending_sent
@@ -48,13 +51,4 @@ class User < ApplicationRecord
   # Protected
 
   # Private
-  private
-
-  def accepted_sent_ids
-    sent_friendships.accepted.pluck(:receiver_id)
-  end
-
-  def accepted_received_ids
-    received_friendships.accepted.pluck(:requester_id)
-  end
 end

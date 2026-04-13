@@ -54,6 +54,7 @@ en:
         available: "Available"
         away: "Away"
         busy: "Busy"
+        offline: "Offline"
 
   login_window:
     title: "Mich Live Messenger"

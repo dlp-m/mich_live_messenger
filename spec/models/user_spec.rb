@@ -143,8 +143,8 @@ RSpec.describe User, type: :model do
   # --- Enumerize ---
 
   describe "status enum" do
-    it "exposes the three expected values" do
-      expect(User.status.values).to eq(%w[available away busy])
+    it "exposes the four expected values" do
+      expect(User.status.values).to eq(%w[available away busy offline])
     end
 
     it "defaults to available" do
