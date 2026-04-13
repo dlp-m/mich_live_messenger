@@ -50,6 +50,96 @@ RSpec.describe User, type: :model do
     end
   end
 
+  # --- Friendship methods ---
+
+  describe "friendship associations and helpers" do
+    let(:alice) { Fabricate(:user) }
+    let(:bob)   { Fabricate(:user) }
+    let(:carol) { Fabricate(:user) }
+
+    describe "#friends" do
+      it "includes a user with whom an accepted friendship was sent" do
+        Fabricate(:accepted_friendship, requester: alice, receiver: bob)
+        expect(alice.friends).to include(bob)
+      end
+
+      it "includes a user with whom an accepted friendship was received" do
+        Fabricate(:accepted_friendship, requester: bob, receiver: alice)
+        expect(alice.friends).to include(bob)
+      end
+
+      it "excludes users with only a pending friendship" do
+        Fabricate(:friendship, requester: alice, receiver: bob, status: :pending)
+        expect(alice.friends).not_to include(bob)
+      end
+
+      it "returns an empty relation when no accepted friendships exist" do
+        expect(alice.friends).to be_empty
+      end
+    end
+
+    describe "#pending_sent" do
+      it "returns pending friendships where the user is the requester" do
+        f = Fabricate(:friendship, requester: alice, receiver: bob, status: :pending)
+        expect(alice.pending_sent).to include(f)
+      end
+
+      it "does not include received pending friendships" do
+        Fabricate(:friendship, requester: bob, receiver: alice, status: :pending)
+        expect(alice.pending_sent).to be_empty
+      end
+    end
+
+    describe "#pending_received" do
+      it "returns pending friendships where the user is the receiver" do
+        f = Fabricate(:friendship, requester: bob, receiver: alice, status: :pending)
+        expect(alice.pending_received).to include(f)
+      end
+
+      it "does not include sent pending friendships" do
+        Fabricate(:friendship, requester: alice, receiver: bob, status: :pending)
+        expect(alice.pending_received).to be_empty
+      end
+    end
+
+    describe "#friendship_with" do
+      it "returns the friendship record between two users" do
+        f = Fabricate(:friendship, requester: alice, receiver: bob)
+        expect(alice.friendship_with(bob)).to eq(f)
+      end
+
+      it "finds the friendship regardless of direction" do
+        f = Fabricate(:friendship, requester: bob, receiver: alice)
+        expect(alice.friendship_with(bob)).to eq(f)
+      end
+
+      it "returns nil when no friendship exists" do
+        expect(alice.friendship_with(bob)).to be_nil
+      end
+    end
+
+    describe "#friend?" do
+      it "returns true when an accepted friendship exists" do
+        Fabricate(:accepted_friendship, requester: alice, receiver: bob)
+        expect(alice.friend?(bob)).to be true
+      end
+
+      it "returns true regardless of direction" do
+        Fabricate(:accepted_friendship, requester: bob, receiver: alice)
+        expect(alice.friend?(bob)).to be true
+      end
+
+      it "returns false when the friendship is pending" do
+        Fabricate(:friendship, requester: alice, receiver: bob, status: :pending)
+        expect(alice.friend?(bob)).to be false
+      end
+
+      it "returns false when no friendship exists" do
+        expect(alice.friend?(bob)).to be false
+      end
+    end
+  end
+
   # --- Enumerize ---
 
   describe "status enum" do

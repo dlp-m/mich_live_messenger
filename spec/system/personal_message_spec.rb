@@ -6,7 +6,7 @@ RSpec.describe "Personal message inline edit", type: :system do
   before { sign_in_as(user) }
 
   it "shows the placeholder when personal message is blank" do
-    expect(page).to have_content("Cliquez ici pour ajouter un message")
+    expect(page).to have_content(I18n.t("personal_message.placeholder"))
   end
 
   it "clears the placeholder on focus" do
@@ -38,7 +38,7 @@ RSpec.describe "Personal message inline edit", type: :system do
     find("[data-controller='personal-message']").click
     find("[data-controller='personal-message']").send_keys("texte annulé", :escape)
 
-    expect(page).to have_content("Cliquez ici pour ajouter un message")
+    expect(page).to have_content(I18n.t("personal_message.placeholder"))
     expect(user.reload.personal_message).to be_blank
   end
 
@@ -63,7 +63,7 @@ RSpec.describe "Personal message inline edit", type: :system do
       el.send_keys(:return)
 
       expect(page).to have_selector("[data-controller='personal-message'][data-saved='true']")
-      expect(page).to have_content("Cliquez ici pour ajouter un message")
+      expect(page).to have_content(I18n.t("personal_message.placeholder"))
       expect(user.reload.personal_message).to be_blank
     end
   end
