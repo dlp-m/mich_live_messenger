@@ -10,12 +10,12 @@
   </head>
   <body class="h-full bg-home">
     <% if administrator_signed_in? %>
-    <%= render('administrators/layouts/side_bar') %>
+    <%= render("administrators/layouts/side_bar") %>
     <% end %>
     <div class="lg:pl-72">
       <main class="py-10">
         <div class="px-4 sm:px-6 lg:px-8">
-          <%= render('layouts/flash') %>
+          <%= render("layouts/flash") %>
           <%= yield %>
         </div>
       </main>

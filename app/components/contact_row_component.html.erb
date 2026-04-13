@@ -1,0 +1,9 @@
+<div class="flex items-center gap-2 px-3 py-1.5 cursor-default border-b border-[#eef4fa] <%= offline? ? "hover:bg-[#f0f4f8] opacity-60" : "hover:bg-[#ddeeff]" %>">
+  <%= render ContactAvatarComponent.new(initials: @initials, color: @color, status: @status) %>
+  <div class="min-w-0">
+    <p class="text-[12px] <%= offline? ? "text-gray-600" : "text-gray-800" %> truncate"><%= @name %></p>
+    <% if @message.present? %>
+      <p class="text-[10px] text-gray-400 truncate italic"><%= @message %></p>
+    <% end %>
+  </div>
+</div>

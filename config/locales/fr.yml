@@ -1,0 +1,89 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        friendship:
+          self_referential: "Vous ne pouvez pas vous ajouter vous-même"
+          reverse_active_friendship: "Une demande d'ami existe déjà entre ces utilisateurs"
+
+  errors:
+    not_authorized: "Non autorisé"
+
+  personal_message:
+    placeholder: "Cliquez ici pour ajouter un message"
+
+  friendships:
+    errors:
+      user_not_found: "Aucun utilisateur trouvé avec cet email"
+      self_request: "Vous ne pouvez pas vous ajouter vous-même"
+      already_exists: "Une demande d'ami existe déjà entre ces utilisateurs"
+      blocked: "Impossible d'envoyer une demande à cet utilisateur"
+
+  enumerize:
+    user:
+      status:
+        available: "Disponible"
+        away: "Absent"
+        busy: "Occupé"
+        offline: "Hors ligne"
+
+  login_window:
+    title: "Mich Live Messenger"
+    sign_in_to: "Se connecter à"
+    app_name_prefix: "Mich Live"
+    app_name_suffix: "Messenger"
+    email: "Adresse e-mail :"
+    password: "Mot de passe :"
+    remember_me: "Mémoriser mon ID et mon mot de passe"
+    forget_me: "M'oublier"
+    sign_in_automatically: "Me connecter automatiquement"
+    sign_in_as: "Se connecter en tant que :"
+    sign_in: "Se connecter"
+    cancel: "Annuler"
+    forgot_password: "Mot de passe oublié ?"
+    no_account: "Vous n'avez pas de compte ?"
+    sign_up_link: "S'inscrire"
+    sign_up: "Créer un compte Mich Live Messenger"
+    windows_live_id: "Windows Live ID"
+    privacy: "Confidentialité"
+    terms: "Conditions d'utilisation"
+    server_status: "État du serveur"
+    about: "À propos"
+    options: "Options"
+
+  registration:
+    window_title: "Créer un compte Mich Live"
+    heading: "Créer votre"
+    heading_bold: "Mich Live ID"
+    subtitle: "Remplissez les informations ci-dessous pour créer votre compte."
+    username: "Nom d'affichage"
+    username_hint: "Le nom visible par vos contacts"
+    email: "Adresse e-mail"
+    password: "Mot de passe"
+    password_confirmation: "Confirmer le mot de passe"
+    password_hint: "%{min} caractères minimum"
+    submit: "Créer un compte"
+    already_registered: "Déjà inscrit ?"
+    sign_in_link: "Se connecter"
+
+  devise:
+    sessions:
+      signed_in: "Connecté avec succès."
+      signed_out: "Déconnecté avec succès."
+      already_signed_in: "Déjà connecté."
+    registrations:
+      signed_up: "Bienvenue ! Votre compte a été créé avec succès."
+      updated: "Votre compte a été mis à jour."
+      destroyed: "Votre compte a été supprimé."
+    passwords:
+      send_instructions: "Vous allez recevoir un e-mail avec les instructions de réinitialisation."
+      updated: "Votre mot de passe a été modifié."
+    failure:
+      invalid: "Adresse e-mail ou mot de passe invalide."
+      not_found_in_database: "Adresse e-mail ou mot de passe invalide."
+      unauthenticated: "Vous devez vous connecter pour continuer."
+      unconfirmed: "Vous devez confirmer votre compte avant de continuer."
+      locked: "Votre compte est verrouillé."
+      last_attempt: "Encore une tentative avant le verrouillage de votre compte."
+      timeout: "Votre session a expiré. Veuillez vous reconnecter."
+      inactive: "Votre compte n'est pas encore activé."

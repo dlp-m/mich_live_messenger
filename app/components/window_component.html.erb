@@ -1,0 +1,25 @@
+<div class="absolute top-[calc(50%-21px)] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-t-lg overflow-hidden shadow-[0_0_0_1px_rgba(80,130,190,0.55),0_6px_28px_rgba(0,40,100,0.35),0_10px_40px_rgba(0,0,0,0.4)] border border-[#8aaac8] select-none"
+     style="width: <%= @width %>"
+     role="dialog" aria-label="<%= @title %>"
+     data-controller="drag">
+
+  <div class="relative flex items-center justify-between h-[30px] px-2 bg-gradient-to-b from-[#dbe9f7] via-[#bcd3ec] to-[#9bbddf] border-b border-[#7898ba] cursor-grab"
+       data-action="mousedown->drag#startDrag">
+    <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/55 to-transparent pointer-events-none"></div>
+    <div class="relative flex items-center gap-1.5 min-w-0 z-10">
+      <svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true" class="shrink-0">
+        <ellipse cx="16" cy="16" rx="14" ry="9" fill="#f90" opacity=".9" />
+        <ellipse cx="16" cy="16" rx="9" ry="14" fill="#0af" opacity=".8" />
+        <ellipse cx="16" cy="16" rx="5" ry="5" fill="#fff" opacity=".9" />
+      </svg>
+      <span class="text-[12px] text-[#1a3a5c] font-medium truncate"><%= @title %></span>
+    </div>
+    <div class="relative flex items-center gap-[3px] shrink-0 z-10">
+      <span class="flex items-end justify-center w-[26px] h-[19px] pb-px text-[11px] text-[#2a4a6c] cursor-default rounded-sm bg-gradient-to-b from-white/75 to-[#b0c8e0]/90 border border-[#7898ba]/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">─</span>
+      <span class="flex items-center justify-center w-[26px] h-[19px] text-[11px] text-[#2a4a6c] cursor-default rounded-sm bg-gradient-to-b from-white/75 to-[#b0c8e0]/90 border border-[#7898ba]/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">□</span>
+      <span class="flex items-center justify-center w-[26px] h-[19px] text-[11px] font-bold text-white cursor-default rounded-sm bg-gradient-to-b from-[#f06060] to-[#c81818] border border-[#a01010] shadow-[inset_0_1px_0_rgba(255,160,160,0.5)]">✕</span>
+    </div>
+  </div>
+
+  <%= content %>
+</div>

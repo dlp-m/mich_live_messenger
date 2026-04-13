@@ -25,6 +25,9 @@ gem "simple_form-tailwind", "~> 0.1.1"
 gem "action_policy", "~> 0.7.5"
 # gem "bcrypt", "~> 3.1.7"
 
+# --- Enums & i18n ---
+gem "enumerize"
+
 # --- Database & Queries ---
 gem "activerecord_where_assoc"
 
@@ -69,6 +72,11 @@ group :development do
   gem "rubocop"
   gem "rubocop-rails", require: false
   gem "rubocop-performance"
+end
+
+group :development, :test do
+  gem "rspec-rails"
+  gem "fabrication"
 end
 
 group :test do

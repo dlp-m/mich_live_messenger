@@ -1,0 +1,102 @@
+<%= render WindowComponent.new(title: "Mich Live Messenger", width: "280px") do %>
+  <div class="flex flex-col bg-white">
+
+    <div class="relative px-3 pt-4 pb-3 bg-gradient-to-b from-[#8bbad8] via-[#cce4f6] to-[#e8f4fc]">
+      <div class="flex items-center gap-2.5"
+           data-controller="dropdown"
+           data-dropdown-url-value="<%= users_current_user_path %>">
+        <div class="shrink-0 w-12 h-12 rounded-lg p-[3px] shadow-[0_2px_6px_rgba(0,0,0,0.2)]"
+             style="background: <%= current_user.status.available? ? "linear-gradient(to bottom right,#b0e050,#66cc22,#3a9010)" : current_user.status.away? ? "linear-gradient(to bottom right,#f0c040,#ddaa22,#aa7700)" : "linear-gradient(to bottom right,#f07070,#cc4444,#aa1010)" %>"
+             data-dropdown-target="avatarFrame">
+          <div class="w-full h-full rounded-md overflow-hidden">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar, alt: "", class: "w-full h-full object-cover" %>
+            <% else %>
+              <%= image_tag "avatar.webp", alt: "", class: "w-full h-full object-cover" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-1 min-w-0">
+            <p class="text-[13px] font-bold text-[#1a3060] truncate shrink-0 max-w-[120px]"><%= current_user.username %></p>
+            <div class="relative shrink-0">
+              <span class="flex items-center gap-1 text-[11px] text-[#4a6a8a] cursor-pointer hover:text-[#1a3060] select-none"
+                    data-action="click->dropdown#toggle">
+                <span class="w-2 h-2 rounded-sm inline-block"
+                      style="background-color: <%= current_user.status.available? ? "#22aa22" : current_user.status.away? ? "#ddaa22" : "#cc4444" %>"
+                      data-dropdown-target="dot"></span>
+                <span data-dropdown-target="label"><%= current_user.status.text %></span>
+                <span class="text-[9px]">▾</span>
+              </span>
+              <% status_colors = { "available" => "#22aa22", "away" => "#ddaa22", "busy" => "#cc4444" } %>
+              <div data-dropdown-target="menu" class="hidden absolute left-0 top-full mt-0.5 w-44 bg-[#f4f8fc] border border-[#7898ba] shadow-[1px_2px_4px_rgba(0,0,0,0.18)] z-50 text-[12px]">
+                <% User.status.values.reject { |val| val.to_sym == :offline }.each do |val| %>
+                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
+                       data-action="click->dropdown#select"
+                       data-status="<%= val %>"
+                       data-label="<%= val.text %>">
+                    <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: <%= status_colors[val.to_s] %>"></span>
+                    <%= val.text %>
+                  </div>
+                <% end %>
+                <div class="border-t border-[#c8d8e8] my-0.5"></div>
+                <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete,
+                      class: "w-full text-left px-3 py-1.5 hover:bg-[#fff0f0] text-gray-700 cursor-pointer" %>
+              </div>
+            </div>
+          </div>
+          <span class="block text-[11px] text-[#4a6080] italic cursor-text truncate outline-none hover:text-[#2a4a7a] focus:bg-white/50 focus:truncate-none"
+                contenteditable="true"
+                data-controller="personal-message"
+                data-personal-message-url-value="<%= users_current_user_path %>"
+                data-personal-message-placeholder-value="<%= t("personal_message.placeholder") %>"
+                data-action="focus->personal-message#focus blur->personal-message#save keydown->personal-message#keydown"
+                data-original="<%= current_user.personal_message.to_s %>"><%= current_user.personal_message.presence || t("personal_message.placeholder") %></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-2 py-1 bg-[#eef4fa] border-b border-[#c8d8e8]">
+      <div class="relative">
+        <span class="absolute left-1.5 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none">🔍</span>
+        <input type="text" placeholder="Rechercher un contact" autocomplete="off"
+               class="w-full pl-6 pr-2 py-0.5 text-[11px] border border-[#c0ccd8] bg-white focus:outline-none focus:border-[#4a80c8]">
+      </div>
+    </div>
+
+    <div class="overflow-y-auto h-[310px] shrink-0">
+
+      <%= render ContactGroupComponent.new(label: "En ligne (2)") do %>
+        <%= render ContactRowComponent.new(name: "Thomas G.", initials: "TG", color: "#4a78cc", status: :online, message: "En train de coder… 💻") %>
+        <%= render ContactRowComponent.new(name: "Sarah M.", initials: "SM", color: "#9a55cc", status: :online, message: "🎵 Coldplay - The Scientist") %>
+      <% end %>
+
+      <%= render ContactGroupComponent.new(label: "Hors ligne (3)", open: false) do %>
+        <%= render ContactRowComponent.new(name: "Alexandre D.", initials: "AD", color: "#7a7a8a", status: :offline) %>
+        <%= render ContactRowComponent.new(name: "Julie P.", initials: "JP", color: "#8a7a7a", status: :offline) %>
+        <%= render ContactRowComponent.new(name: "Marc B.", initials: "MB", color: "#7a8a7a", status: :offline) %>
+      <% end %>
+
+    </div>
+
+    <div class="border-t border-[#b8cce0] bg-gradient-to-b from-[#ddeeff] to-[#cce4f8] px-3 py-1.5">
+      <p class="text-[10px] font-bold text-[#2a4a7a] mb-0.5">Nouveautés</p>
+      <p class="text-[10px] text-[#4a6a8a]">Aucune nouvelle activité de vos contacts.</p>
+    </div>
+    <div class="flex items-center justify-between px-3 py-1 bg-gradient-to-b from-[#cce4f8] to-[#b8d8f0] border-t border-[#a8c8e0]">
+      <svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true" class="shrink-0 opacity-70">
+        <ellipse cx="16" cy="16" rx="14" ry="9" fill="#f90" opacity=".9">
+        </ellipse>
+        <ellipse cx="16" cy="16" rx="9" ry="14" fill="#0af" opacity=".8">
+        </ellipse>
+        <ellipse cx="16" cy="16" rx="5" ry="5" fill="#fff" opacity=".9">
+        </ellipse>
+      </svg>
+      <div class="flex-1 mx-2 bg-gradient-to-b from-[#66cc44] to-[#44aa22] text-white text-center text-[9px] font-bold py-1 px-2 rounded-sm shadow-inner cursor-pointer leading-tight">
+        <div>Mich Live Messenger</div>
+        <div class="font-normal opacity-90">Restez connecté !</div>
+      </div>
+    </div>
+
+  </div>
+<% end %>

@@ -1,6 +1,9 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require "fabrication"
+
+Dir[Rails.root.join("test/fabricators/**/*.rb")].each { |f| require f }
 
 module ActiveSupport
   class TestCase

@@ -1,1 +1,5 @@
-<%# Bureau — contenu à venir (icônes, fenêtres...) %>
+<% if user_signed_in? %>
+  <%= render "messenger_window" %>
+<% else %>
+  <%= render "login_window" %>
+<% end %>

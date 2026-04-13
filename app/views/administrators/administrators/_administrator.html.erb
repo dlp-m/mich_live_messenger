@@ -1,13 +1,13 @@
-<%= turbo_frame_tag "administrators", target: '_top' do %>
+<%= turbo_frame_tag "administrators", target: "_top" do %>
   <%= render(FormComponent.new(item: administrator)) do |form| %>
     <% current_page = if administrator.persisted?
-                      { label: I18n.t('bo.show'), path: administrators_administrator_path(administrator) }
-                    else
-                      { label: I18n.t('bo.administrator.new').capitalize, path: new_administrators_administrator_path }
-                    end
-      form.with_title(administrator.persisted? ? administrator.email : I18n.t('bo.administrator.new').capitalize)
+                      { label: I18n.t("bo.show"), path: administrators_administrator_path(administrator) }
+       else
+                      { label: I18n.t("bo.administrator.new").capitalize, path: new_administrators_administrator_path }
+       end
+      form.with_title(administrator.persisted? ? administrator.email : I18n.t("bo.administrator.new").capitalize)
       form.with_breadcrumb([
-            { label: I18n.t('bo.administrator.others').capitalize, path: administrators_administrators_path },
+            { label: I18n.t("bo.administrator.others").capitalize, path: administrators_administrators_path },
             current_page
           ]) %>
       <%= render "form", administrator: @administrator %>

@@ -7,7 +7,20 @@ Rails.application.routes.draw do
       end
   end
   devise_for :administrators, path: "administrators"
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations"
+  }
+  namespace :users do
+    resource :current_user, only: [ :update ], controller: "current_user"
+  end
+  resources :friendships, only: %i[index create destroy] do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
+
   mount Tybo::Engine => "/tybo"
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

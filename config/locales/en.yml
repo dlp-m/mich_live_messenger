@@ -28,4 +28,91 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        friendship:
+          self_referential: "You cannot add yourself as a friend"
+          reverse_active_friendship: "A friend request already exists between these users"
+
+  errors:
+    not_authorized: "Not authorized"
+
+  personal_message:
+    placeholder: "Click here to add a personal message"
+
+  friendships:
+    errors:
+      user_not_found: "No user found with this email address"
+      self_request: "You cannot add yourself as a friend"
+      already_exists: "A friend request already exists between these users"
+      blocked: "Unable to send a friend request to this user"
+
+  enumerize:
+    user:
+      status:
+        available: "Available"
+        away: "Away"
+        busy: "Busy"
+        offline: "Offline"
+
+  login_window:
+    title: "Mich Live Messenger"
+    sign_in_to: "Sign in to"
+    app_name_prefix: "Mich Live"
+    app_name_suffix: "Messenger"
+    email: "E-mail address:"
+    password: "Password:"
+    remember_me: "Remember my ID and password"
+    forget_me: "Forget me"
+    sign_in_automatically: "Sign me in automatically"
+    sign_in_as: "Sign in as:"
+    sign_in: "Sign in"
+    cancel: "Cancel"
+    forgot_password: "Forgot your password?"
+    no_account: "Don't have an account?"
+    sign_up_link: "Sign up"
+    sign_up: "Sign up for Mich Live Messenger"
+    windows_live_id: "Windows Live ID"
+    privacy: "Privacy statement"
+    terms: "Terms of use"
+    server_status: "Server status"
+    about: "About"
+    options: "Options"
+
+  registration:
+    window_title: "Create a Mich Live Account"
+    heading: "Create your"
+    heading_bold: "Mich Live ID"
+    subtitle: "Fill in the information below to create your account."
+    username: "Display name"
+    username_hint: "The name your contacts will see"
+    email: "Email address"
+    password: "Password"
+    password_confirmation: "Confirm password"
+    password_hint: "%{min} characters minimum"
+    submit: "Create account"
+    already_registered: "Already registered?"
+    sign_in_link: "Sign in"
+
+  devise:
+    sessions:
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+      already_signed_in: "You are already signed in."
+    registrations:
+      signed_up: "Welcome! Your account has been created."
+      updated: "Your account has been updated."
+      destroyed: "Your account has been deleted."
+    passwords:
+      send_instructions: "You will receive an email with reset instructions."
+      updated: "Your password has been changed."
+    failure:
+      invalid: "Invalid email or password."
+      not_found_in_database: "Invalid email or password."
+      unauthenticated: "You need to sign in to continue."
+      unconfirmed: "You need to confirm your account."
+      locked: "Your account is locked."
+      last_attempt: "One more attempt before your account is locked."
+      timeout: "Your session expired. Please sign in again."
+      inactive: "Your account is not activated yet."
