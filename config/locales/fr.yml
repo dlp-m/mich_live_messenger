@@ -1,4 +1,24 @@
 fr:
+  activerecord:
+    errors:
+      models:
+        friendship:
+          self_referential: "Vous ne pouvez pas vous ajouter vous-même"
+          reverse_active_friendship: "Une demande d'ami existe déjà entre ces utilisateurs"
+
+  errors:
+    not_authorized: "Non autorisé"
+
+  personal_message:
+    placeholder: "Cliquez ici pour ajouter un message"
+
+  friendships:
+    errors:
+      user_not_found: "Aucun utilisateur trouvé avec cet email"
+      self_request: "Vous ne pouvez pas vous ajouter vous-même"
+      already_exists: "Une demande d'ami existe déjà entre ces utilisateurs"
+      blocked: "Impossible d'envoyer une demande à cet utilisateur"
+
   enumerize:
     user:
       status:

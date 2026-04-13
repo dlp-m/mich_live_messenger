@@ -28,6 +28,26 @@
 #       enabled: "ON"
 
 en:
+  activerecord:
+    errors:
+      models:
+        friendship:
+          self_referential: "You cannot add yourself as a friend"
+          reverse_active_friendship: "A friend request already exists between these users"
+
+  errors:
+    not_authorized: "Not authorized"
+
+  personal_message:
+    placeholder: "Click here to add a personal message"
+
+  friendships:
+    errors:
+      user_not_found: "No user found with this email address"
+      self_request: "You cannot add yourself as a friend"
+      already_exists: "A friend request already exists between these users"
+      blocked: "Unable to send a friend request to this user"
+
   enumerize:
     user:
       status:
