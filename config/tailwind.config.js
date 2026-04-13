@@ -70,7 +70,7 @@ module.exports = {
           'start-top':         '#7fd87f',
           'tray-border':       '#0a2880',
           'btn-control':       '#2356c9',
-          'btn-control-border':'#0831b0',
+          'btn-control-border':  '#0831b0',
           'btn-close':         '#c42b2b',
           'btn-close-border':  '#8b1a1a',
           'window-footer':     '#cddff0',

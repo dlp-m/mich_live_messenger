@@ -1,12 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
-const PLACEHOLDER = "Cliquez ici pour ajouter un message"
-
 export default class extends Controller {
-  static values = { url: String }
+  static values = { url: String, placeholder: String }
 
   focus() {
-    if (this.element.textContent.trim() === PLACEHOLDER) {
+    if (this.element.textContent.trim() === this.placeholderValue) {
       this.element.textContent = ""
     }
   }
@@ -24,7 +22,7 @@ export default class extends Controller {
     const original = this.element.dataset.original
 
     if (value === original) {
-      if (!value) this.element.textContent = PLACEHOLDER
+      if (!value) this.element.textContent = this.placeholderValue
       return
     }
 
@@ -39,7 +37,7 @@ export default class extends Controller {
       if (r.ok) {
         this.element.dataset.original = value
         this.element.dataset.saved = "true"
-        if (!value) this.element.textContent = PLACEHOLDER
+        if (!value) this.element.textContent = this.placeholderValue
       } else {
         this._cancel()
       }
@@ -48,6 +46,6 @@ export default class extends Controller {
 
   _cancel() {
     const original = this.element.dataset.original
-    this.element.textContent = original || PLACEHOLDER
+    this.element.textContent = original || this.placeholderValue
   }
 }

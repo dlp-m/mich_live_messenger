@@ -29,13 +29,16 @@
             <%= hidden_field_tag "user[status]", "available", id: "user_status" %>
 
             <div class="mb-2">
+              <%= label_tag "user_email", t("login_window.email"), class: "sr-only" %>
               <%= text_field_tag "user[email]", nil,
                     id: "user_email", type: "email",
                     autocomplete: "email", autofocus: true, required: true,
+                    placeholder: t("login_window.email"),
                     class: "w-full border border-[#a0a8b0] px-2 py-1 text-sm bg-white shadow-[inset_1px_1px_3px_rgba(0,0,0,0.15)] focus:outline-none focus:border-[#4a80c8]" %>
             </div>
 
             <div class="mb-1">
+              <%= label_tag "user_password", t("login_window.password"), class: "sr-only" %>
               <%= password_field_tag "user[password]", nil,
                     id: "user_password", autocomplete: "current-password", required: true,
                     placeholder: t("login_window.password"),
@@ -56,28 +59,17 @@
                   <span data-dropdown-target="label"><%= t("enumerize.user.status.available") %></span>
                   <span class="text-[10px] text-gray-500">▾</span>
                 </span>
+                <% status_colors = { "available" => "#22aa22", "away" => "#ddaa22", "busy" => "#cc4444" } %>
                 <div data-dropdown-target="menu" class="hidden absolute left-0 top-full mt-0.5 w-40 bg-[#f4f8fc] border border-[#7898ba] shadow-[1px_2px_4px_rgba(0,0,0,0.18)] z-50 text-[12px]">
-                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
-                       data-action="click->dropdown#select"
-                       data-status="available"
-                       data-label="<%= t("enumerize.user.status.available") %>">
-                    <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #22aa22"></span>
-                    <%= t("enumerize.user.status.available") %>
-                  </div>
-                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
-                       data-action="click->dropdown#select"
-                       data-status="away"
-                       data-label="<%= t("enumerize.user.status.away") %>">
-                    <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #ddaa22"></span>
-                    <%= t("enumerize.user.status.away") %>
-                  </div>
-                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
-                       data-action="click->dropdown#select"
-                       data-status="busy"
-                       data-label="<%= t("enumerize.user.status.busy") %>">
-                    <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #cc4444"></span>
-                    <%= t("enumerize.user.status.busy") %>
-                  </div>
+                  <% User.status.values.each do |val| %>
+                    <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
+                         data-action="click->dropdown#select"
+                         data-status="<%= val %>"
+                         data-label="<%= val.text %>">
+                      <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: <%= status_colors[val.to_s] %>"></span>
+                      <%= val.text %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>

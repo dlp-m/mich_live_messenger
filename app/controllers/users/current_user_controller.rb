@@ -3,8 +3,11 @@ class Users::CurrentUserController < ApplicationController
 
   def update
     authorize! current_user, to: :update?, with: UserPolicy
-    current_user.update!(current_user_params)
-    head :ok
+    if current_user.update(current_user_params)
+      head :ok
+    else
+      render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   private

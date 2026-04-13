@@ -28,28 +28,17 @@
                 <span data-dropdown-target="label"><%= current_user.status.text %></span>
                 <span class="text-[9px]">▾</span>
               </span>
+              <% status_colors = { "available" => "#22aa22", "away" => "#ddaa22", "busy" => "#cc4444" } %>
               <div data-dropdown-target="menu" class="hidden absolute left-0 top-full mt-0.5 w-44 bg-[#f4f8fc] border border-[#7898ba] shadow-[1px_2px_4px_rgba(0,0,0,0.18)] z-50 text-[12px]">
-                <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
-                     data-action="click->dropdown#select"
-                     data-status="available"
-                     data-label="<%= t("enumerize.user.status.available") %>">
-                  <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #22aa22"></span>
-                  <%= t("enumerize.user.status.available") %>
-                </div>
-                <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
-                     data-action="click->dropdown#select"
-                     data-status="away"
-                     data-label="<%= t("enumerize.user.status.away") %>">
-                  <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #ddaa22"></span>
-                  <%= t("enumerize.user.status.away") %>
-                </div>
-                <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
-                     data-action="click->dropdown#select"
-                     data-status="busy"
-                     data-label="<%= t("enumerize.user.status.busy") %>">
-                  <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: #cc4444"></span>
-                  <%= t("enumerize.user.status.busy") %>
-                </div>
+                <% User.status.values.each do |val| %>
+                  <div class="flex items-center gap-2 px-3 py-1.5 hover:bg-[#ddeeff] cursor-pointer"
+                       data-action="click->dropdown#select"
+                       data-status="<%= val %>"
+                       data-label="<%= val.text %>">
+                    <span class="w-2.5 h-2.5 rounded-sm shrink-0" style="background-color: <%= status_colors[val.to_s] %>"></span>
+                    <%= val.text %>
+                  </div>
+                <% end %>
                 <div class="border-t border-[#c8d8e8] my-0.5"></div>
                 <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete,
                       class: "w-full text-left px-3 py-1.5 hover:bg-[#fff0f0] text-gray-700 cursor-pointer" %>
@@ -60,8 +49,9 @@
                 contenteditable="true"
                 data-controller="personal-message"
                 data-personal-message-url-value="<%= users_current_user_path %>"
+                data-personal-message-placeholder-value="<%= t("personal_message.placeholder") %>"
                 data-action="focus->personal-message#focus blur->personal-message#save keydown->personal-message#keydown"
-                data-original="<%= current_user.personal_message.to_s %>"><%= current_user.personal_message.presence || "Cliquez ici pour ajouter un message" %></span>
+                data-original="<%= current_user.personal_message.to_s %>"><%= current_user.personal_message.presence || t("personal_message.placeholder") %></span>
         </div>
       </div>
     </div>
